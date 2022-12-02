@@ -1,16 +1,110 @@
-# This is a sample Python script.
+# Семинар 10. Задача 2. Реализуйте класс Table, который хранит целые числа в двумерной таблице.
+#     При инициализации Table (rows, cols) экземпляру передаются число строк и столбцов в таблице.
+#     Строки и столбцы нумеруются с нуля.
+#         table.get_value(row, col) — прочитать значение из ячейки в строке row, столбце col.
+#                                     Если ячейка с индексами row и col не лежит внутри таблицы, нужно вернуть None.
+#         table.set_value(row, col, value) — записать число в ячейку строки row, столбца col.
+#                                            Гарантируется, что в тестах будет в запись только в ячейки внутри таблицы.
+#         table.n_rows() — вернуть число строк в таблице
+#         table.n_cols() — вернуть число столбцов в таблице
+#         table.delete_row(row) — удалить строку с номером row
+#         table.delete_col(col) — удалить колонку с номером col
+#         table.add_row(row) — добавить в таблицу новую строку с индексом row.
+#                              Номера строк >= row, должны увеличиться на единицу. Новая строка состоит из нулей.
+#         table.add_col(col) — добавить в таблицу новую колонку с индексом col.
+#                              Номера колонок >= col, должны увеличиться на единицу. Новая колонка состоит из нулей.
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import table as t
 
+print("Пример 1:")
+tab = t.Table(3, 5)
+tab.set_value(0, 1, 10)
+tab.set_value(1, 2, 20)
+tab.set_value(2, 3, 30)
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+tab.add_row(1)
 
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+print("Пример 2:")
+tab = t.Table(2, 2)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+tab.set_value(0, 0, 10)
+tab.set_value(0, 1, 20)
+tab.set_value(1, 0, 30)
+tab.set_value(1, 1, 40)
+
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+for i in range(-1, tab.n_rows() + 1):
+    for j in range(-1, tab.n_cols() + 1):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+tab.add_row(0)
+tab.add_col(1)
+
+for i in range(-1, tab.n_rows() + 1):
+    for j in range(-1, tab.n_cols() + 1):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+print("Пример 3:")
+tab = t.Table(1, 1)
+
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+tab.set_value(0, 0, 1000)
+
+for i in range(tab.n_rows()):
+    for j in range(tab.n_cols()):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+for i in range(-1, tab.n_rows() + 1):
+    for j in range(-1, tab.n_cols() + 1):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
+
+tab.add_row(0)
+tab.add_row(2)
+tab.add_col(0)
+tab.add_col(2)
+
+tab.set_value(0, 0, 2000)
+tab.set_value(0, 2, 3000)
+tab.set_value(2, 0, 4000)
+tab.set_value(2, 2, 5000)
+
+for i in range(-1, tab.n_rows() + 1):
+    for j in range(-1, tab.n_cols() + 1):
+        print(tab.get_value(i, j), end=' ')
+    print()
+print()
